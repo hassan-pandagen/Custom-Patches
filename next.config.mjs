@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Enable modern image formats for better compression (30-50% smaller)
-    formats: ["image/avif", "image/webp"],
+    // AVIF deliberately removed. GHSA-2xp9-vwfh-vxw4 (Next.js, 25 Aug 2026):
+    // a libheif flaw reachable through sharp allowed unauthenticated RCE when
+    // the optimizer processed an attacker-controlled AVIF. Next.js >=16.3.3
+    // disables AVIF optimization itself until libheif is fixed upstream; this
+    // line keeps that explicit and keeps us safe if anyone ever downgrades.
+    // Do not re-add "image/avif" without checking that advisory first.
+    formats: ["image/webp"],
 
     // Device sizes for responsive images (srcset)
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
