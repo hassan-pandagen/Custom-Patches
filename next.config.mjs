@@ -18,13 +18,10 @@ const nextConfig = {
     // Cache optimized images for 1 year (industry standard)
     minimumCacheTTL: 60 * 60 * 24 * 365,
 
-    // Allow images from Cloudinary
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-    ],
+    // No remotePatterns: every image on this site is local (/public/assets).
+    // Only add a host here if we actually render images from it, and scope it
+    // with `pathname` - a bare hostname on a shared CDN trusts every tenant on
+    // it, which is how GHSA-2xp9-vwfh-vxw4 became reachable here.
 
     // Allow local /public/assets images, including the manual "?vN" cache-busting query string
     localPatterns: [
