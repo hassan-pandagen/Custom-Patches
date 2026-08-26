@@ -15,6 +15,11 @@ export function QuoteForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // Filename of an attachment that the customer chose but that failed to
+  // upload. We still send the enquiry (losing the lead is worse than losing
+  // the file) but both the customer and the notification email must be told,
+  // rather than silently reporting success with no artwork.
+  const [failedAttachment, setFailedAttachment] = useState<string | null>(null);
 
   // We will configure this in the next step
   const { upload, uploading: isUploadingFile } = useCloudinary();
@@ -50,18 +55,19 @@ export function QuoteForm() {
   const onSubmit = async (data: QuoteFormData) => {
     setIsSubmitting(true);
     setSubmitError(null);
+    setFailedAttachment(null);
 
     try {
       let attachmentUrl = "";
+      let uploadFailedFor: string | null = null;
 
       // 1. Upload file to Cloudinary (If a file exists)
       if (data.file instanceof File) {
-        // NOTE: This will fail until we set up the Cloudinary Key next
         const uploadedUrl = await upload(data.file);
         if (uploadedUrl) {
           attachmentUrl = uploadedUrl;
         } else {
-           console.warn("File upload failed, sending form without attachment.");
+          uploadFailedFor = data.file.name;
         }
       }
 
@@ -87,7 +93,11 @@ export function QuoteForm() {
            details: `Patch Type: ${data.category}, Size: ${data.size}, Qty: ${data.quantity}, Backing: ${data.backing || "Not specified"}`,
 
           // This allows you to click the link in the email to download the image
-          attachment_link: attachmentUrl || "No file uploaded",
+          attachment_link:
+            attachmentUrl ||
+            (uploadFailedFor
+              ? `UPLOAD FAILED - customer selected "${uploadFailedFor}". Ask them to email it.`
+              : "No file uploaded"),
 
           // Technical Message Body
           message: `
@@ -110,7 +120,13 @@ export function QuoteForm() {
 
             Design File:
             ------------
-            ${attachmentUrl ? attachmentUrl : "No file attached"}
+            ${
+              attachmentUrl
+                ? attachmentUrl
+                : uploadFailedFor
+                  ? `*** ACTION NEEDED *** The customer attached "${uploadFailedFor}" but the upload failed, so there is no file. Reply and ask them to email the artwork.`
+                  : "No file attached"
+            }
           `,
         }),
       });
@@ -118,6 +134,7 @@ export function QuoteForm() {
       const result = await response.json();
 
       if (result.success) {
+        setFailedAttachment(uploadFailedFor);
         setIsSuccess(true);
         reset();
       } else {
@@ -138,6 +155,19 @@ export function QuoteForm() {
         <p className="text-green-700">
           We have received your details and will get back to you shortly with a custom quote.
         </p>
+        {failedAttachment && (
+          <div className="flex items-start gap-2 rounded-lg border border-amber-300 bg-amber-50 p-3 text-left">
+            <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" aria-hidden="true" />
+            <p className="text-sm text-amber-800">
+              We could not attach <strong>{failedAttachment}</strong> to your request. Your quote
+              was sent without it &mdash; please email the file to{" "}
+              <a href="mailto:admin@mycustompatches.com" className="font-medium underline">
+                admin@mycustompatches.com
+              </a>{" "}
+              so we can price it accurately.
+            </p>
+          </div>
+        )}
         <Button onClick={() => setIsSuccess(false)} variant="outline" className="mt-4">
           Send Another Request
         </Button>

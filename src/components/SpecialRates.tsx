@@ -14,6 +14,8 @@ export function SpecialRates() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isUploadingFile, setIsUploadingFile] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  // See QuoteForm: never report success for an attachment that never uploaded.
+  const [failedAttachment, setFailedAttachment] = useState<string | null>(null);
 
   const { upload } = useCloudinary();
 
@@ -55,9 +57,11 @@ export function SpecialRates() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setFailedAttachment(null);
 
     try {
       let attachmentUrl = "";
+      let uploadFailedFor: string | null = null;
 
       if (selectedFile) {
         setIsUploadingFile(true);
@@ -65,7 +69,7 @@ export function SpecialRates() {
         if (uploadedUrl) {
           attachmentUrl = uploadedUrl;
         } else {
-          console.warn("File upload failed, sending form without attachment.");
+          uploadFailedFor = selectedFile.name;
         }
         setIsUploadingFile(false);
       }
@@ -91,7 +95,11 @@ export function SpecialRates() {
           heard_about: formData.heardAbout,
           instructions: formData.instructions,
 
-          attachment_link: attachmentUrl || "No file attached",
+          attachment_link:
+            attachmentUrl ||
+            (uploadFailedFor
+              ? `UPLOAD FAILED - customer selected "${uploadFailedFor}". Ask them to email it.`
+              : "No file attached"),
 
           message: `
             New Free Quote Request:
@@ -112,7 +120,13 @@ export function SpecialRates() {
             ${formData.instructions || "None"}
 
             Design File:
-            ${attachmentUrl ? attachmentUrl : "No file attached"}
+            ${
+              attachmentUrl
+                ? attachmentUrl
+                : uploadFailedFor
+                  ? `*** ACTION NEEDED *** The customer attached "${uploadFailedFor}" but the upload failed, so there is no file. Reply and ask them to email the artwork.`
+                  : "No file attached"
+            }
           `,
         }),
       });
@@ -120,6 +134,7 @@ export function SpecialRates() {
       const result = await response.json();
 
       if (result.success) {
+        setFailedAttachment(uploadFailedFor);
         setIsSuccess(true);
         setFormData({
           name: "",
@@ -133,7 +148,9 @@ export function SpecialRates() {
           instructions: "",
         });
         setSelectedFile(null);
-        setTimeout(() => setIsSuccess(false), 5000);
+        if (!uploadFailedFor) {
+          setTimeout(() => setIsSuccess(false), 5000);
+        }
       }
     } catch (error) {
       console.error("Submission error:", error);
@@ -153,6 +170,16 @@ export function SpecialRates() {
               <p className="font-mouse text-sm text-brand-blue/80 max-w-sm">
                 We&apos;ll contact you within 24 hours with a free quote and mockup for your order.
               </p>
+              {failedAttachment && (
+                <p className="max-w-sm rounded-lg border-2 border-brand-blue bg-white/70 p-3 font-mouse text-sm text-brand-blue">
+                  We could not attach <strong>{failedAttachment}</strong>. Your request was sent
+                  without it &mdash; please email the file to{" "}
+                  <a href="mailto:admin@mycustompatches.com" className="font-bold underline">
+                    admin@mycustompatches.com
+                  </a>
+                  .
+                </p>
+              )}
             </div>
           ) : (
             <>
