@@ -36,7 +36,7 @@ export function BeyondPatches({ onOpenQuote }: BeyondPatchesProps) {
         </svg>
 
         <h2 className="font-display text-4xl sm:text-5xl text-white">BEYOND PATCHES</h2>
-        <p className="mt-3 font-mouse text-xs sm:text-sm text-white/70 uppercase tracking-wide mb-6">
+        <p className="mt-3 font-mouse text-xs sm:text-sm text-white/80 uppercase tracking-wide mb-6">
           Coins, Pins, Keychains &amp; PVC Charms
         </p>
 

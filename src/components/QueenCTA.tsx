@@ -52,7 +52,7 @@ const STEPS: { id: number; place: string; lines: Line[] }[] = [
 ];
 
 // Chunky mint lettering with a heavy black keyline, as in the comp.
-const OUTLINE = { WebkitTextStroke: "6px #000", paintOrder: "stroke" } as const;
+const OUTLINE = { WebkitTextStroke: "4px #000", paintOrder: "stroke" } as const;
 const OUTLINE_XL = { WebkitTextStroke: "9px #000", paintOrder: "stroke" } as const;
 
 interface QueenCTAProps {

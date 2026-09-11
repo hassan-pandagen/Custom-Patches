@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { cn } from "../lib/utils";
@@ -37,16 +38,22 @@ export function Navbar({ onOpenQuote }: NavbarProps) {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-blue">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="font-display text-brand-blue-light leading-[0.85] text-lg sm:text-xl tracking-wide" onClick={closeMenu}>
-          <span className="block">MY CUSTOM</span>
-          <span className="block">PATCHES</span>
+        <Link href="/" className="shrink-0" onClick={closeMenu}>
+          <Image
+            src="/assets/Logo & PIn-01.png"
+            alt="My Custom Patches"
+            width={1250}
+            height={356}
+            className="h-11 w-auto object-contain sm:h-12"
+            priority
+          />
         </Link>
 
         {/* Actions */}
         <div className="flex items-center gap-3">
           <button
             onClick={handleChatClick}
-            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-brand-blue-light/90 px-5 py-2.5 font-mouse text-sm text-brand-blue hover:bg-white transition-colors"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/95 px-5 py-2.5 font-mouse text-sm text-brand-blue hover:bg-white transition-colors"
           >
             <MessageCircle className="h-4 w-4" />
             Chat Now

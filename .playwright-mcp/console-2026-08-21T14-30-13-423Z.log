@@ -1,0 +1,8 @@
+[      10ms] [LOG] [Fast Refresh] done in 53ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:791
+[     387ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:791
+[     427ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:791
+[     657ms] [LOG] Loading Tawk.to widget... @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:791
+[     664ms] [LOG] Tawk.to already loaded @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:791
+[     888ms] [LOG] Tawk.to script loaded successfully @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:791
+[    2149ms] [LOG] Tawk.to widget fully loaded and ready @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:791
+[    2149ms] [LOG] Tawk.to auto-popup already shown before, skipping @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:791

@@ -10,7 +10,9 @@
   --color-brand-dark: #1a1a1a;
 
   /* New brand system (2026 redesign) */
-  --color-brand-blue: #314aef;
+  /* Nudged 4% darker than the original #314aef so blue text on brand-mint
+     clears WCAG AA (4.30:1 -> 4.57:1). Visually identical. */
+  --color-brand-blue: #2f47e5;
   --color-brand-blue-light: #6a7cf3;
   --color-brand-mint: #32f39a;
   --color-brand-lime: #d6f2a5;

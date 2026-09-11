@@ -1,0 +1,343 @@
+- generic [active] [ref=f26e1]:
+  - main [ref=f26e2]:
+    - navigation [ref=f26e3]:
+      - generic [ref=f26e4]:
+        - link "MY CUSTOM PATCHES" [ref=f26e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f26e6]: MY CUSTOM
+          - generic [ref=f26e7]: PATCHES
+        - generic [ref=f26e8]:
+          - button "Chat Now" [ref=f26e9]
+          - button "Toggle menu" [ref=f26e12]: Menu
+      - generic:
+        - list:
+          - listitem:
+            - link "Custom Patches":
+              - /url: /custom-patches
+          - listitem:
+            - link "About Us":
+              - /url: /about
+          - listitem:
+            - link "Blogs & Insights":
+              - /url: /blog
+          - listitem:
+            - link "Contact Us":
+              - /url: /contact
+        - button "Get Instant Quote"
+        - paragraph: EST. 2014 · Austin, United States
+    - generic [ref=f26e14]:
+      - generic: PATCHES
+      - generic [ref=f26e15]:
+        - generic [ref=f26e16]: CUSTOM
+        - img "Examples of custom embroidered, chenille and PVC patches" [ref=f26e18]
+        - generic [ref=f26e19]:
+          - paragraph [ref=f26e20]: From embroidered to PVC, woven, chenille and leather.Every patch type, any quantity, delivered in 12–14 days (rush 4–7 days).Free digital mockup included. No setup fees.
+          - generic [ref=f26e21]:
+            - paragraph [ref=f26e22]: Rated 4.7/5 by 75+ customers on Trustpilot.
+            - generic [ref=f26e23]:
+              - img "ASI" [ref=f26e24]
+              - img "Trustpilot" [ref=f26e25]
+              - img "Google" [ref=f26e26]
+              - img "Etsy" [ref=f26e27]
+        - generic [ref=f26e28]:
+          - button "Get Custom Quote" [ref=f26e29]
+          - button "See All Products" [ref=f26e30]
+    - generic [ref=f26e33]:
+      - heading "Get Your Free Quote & 12-24h Mockup" [level=3] [ref=f26e36]
+      - generic [ref=f26e37]:
+        - generic [ref=f26e38]:
+          - textbox "Name*" [ref=f26e39]
+          - textbox "Email*" [ref=f26e40]
+        - generic [ref=f26e41]:
+          - textbox "Phone Number*" [ref=f26e42]
+          - spinbutton "Quantity (min 5)*" [ref=f26e43]
+        - generic [ref=f26e44]:
+          - textbox "Size or Placement*" [ref=f26e45]
+          - generic [ref=f26e46]: Patch Type
+          - combobox "Patch Type" [ref=f26e47]:
+            - option "Patch Type" [selected]
+            - option "Custom Embroidered Patches"
+            - option "Custom Chenille Patches"
+            - option "Custom Woven Patches"
+            - option "Custom Printed Patches"
+            - option "Custom PVC Patches"
+            - option "Custom Leather Patches"
+            - option "Custom 3D Embroidery Transfer"
+            - option "Custom Sequin Patches"
+          - generic [ref=f26e48]: Backing Type
+          - combobox "Backing Type" [ref=f26e49]:
+            - option "Select Backing" [selected]
+            - option "Iron-on"
+            - option "Sew-on"
+            - option "Velcro"
+            - option "Adhesive"
+            - option "Sticker"
+            - option "Plain (No Backing)"
+        - textbox "How did you hear about us? (optional)" [ref=f26e50]
+        - 'textbox "Instructions: Text \"Panda Patches\" white background..." [ref=f26e51]'
+        - generic [ref=f26e52] [cursor=pointer]:
+          - button "Upload design file (SVG, PNG, JPG or PDF)" [ref=f26e53]
+          - generic [ref=f26e54]:
+            - paragraph [ref=f26e58]: Drop files here or
+            - generic [ref=f26e59]: Select Files
+        - button "Get My Free Quote" [ref=f26e60]
+    - generic [ref=f26e65]:
+      - generic [ref=f26e66]:
+        - generic [ref=f26e67]:
+          - heading "REAL ORDER FROM REAL CUSTOMERS" [level=2] [ref=f26e68]: REAL ORDERFROM REALCUSTOMERS
+          - paragraph [ref=f26e69]: Real Orders. Real people. See why customers keep coming back.
+          - button "View More" [ref=f26e70]
+        - generic [ref=f26e72] [cursor=pointer]:
+          - img "Real customer order" [ref=f26e75]
+          - generic: Hover to Play
+      - generic [ref=f26e77]:
+        - generic [ref=f26e78]:
+          - generic [ref=f26e79]: They're Legit!!
+          - paragraph [ref=f26e80]: They're legit!!! I saw the reviews and asked ChatGPT before ordering. My patches arrived on time and a few were messed up. I sent 1 email with pictures and they mailed me more than I said were unusable. I'll be back for more! Good quality!
+          - generic [ref=f26e81]:
+            - generic [ref=f26e82]: BB
+            - generic [ref=f26e83]:
+              - paragraph [ref=f26e84]: BILLY BOB J.
+              - paragraph [ref=f26e85]: US · Feb 21, 2026
+        - generic [ref=f26e86]:
+          - generic [ref=f26e87]: Epic Experience
+          - paragraph [ref=f26e88]: The quality is outstanding, durable, vibrant, and exactly what I envisioned. From my very first message, the team was friendly, responsive, and incredibly helpful. They checked in to make sure I was satisfied, and their customer service didn't stop after delivery. I highly recommend them!
+          - generic [ref=f26e89]:
+            - generic [ref=f26e90]: SP
+            - generic [ref=f26e91]:
+              - paragraph [ref=f26e92]: SELENA P.
+              - paragraph [ref=f26e93]: US · Feb 16, 2026
+        - generic [ref=f26e94]:
+          - generic [ref=f26e95]: Great Quality
+          - paragraph [ref=f26e96]: My experience was quite positive. They were impressively on time with both delivery and service. The quality of the material was excellent. It felt sturdy yet flexible, which is essential for long-lasting wear. I would recommend Panda Patches for anyone looking for incredibly reliable service.
+          - generic [ref=f26e97]:
+            - generic [ref=f26e98]: TS
+            - generic [ref=f26e99]:
+              - paragraph [ref=f26e100]: TAYE S.
+              - paragraph [ref=f26e101]: US · Nov 28, 2025
+    - generic [ref=f26e107]:
+      - heading "PICK YOUR PATCH TYPE" [level=2] [ref=f26e108]
+      - paragraph [ref=f26e109]: Transparent USD pricing. The per-piece price drops as quantity rises, so smaller orders cost more per piece. Each "from" price is for 2" x 2", 1,000 pcs. Enter your size and quantity for your exact price.
+      - generic [ref=f26e110]:
+        - link "Custom Embroidered Patches Save 25% at 100+ pcs We turn your creative vision into beautifully crafted embroidered patches with vivid thread colors. Custom Embroidered Patches From $0.91" [ref=f26e111] [cursor=pointer]:
+          - /url: /custom-patches/custom-embroidered-patches
+          - generic [ref=f26e114]:
+            - img "Custom Embroidered Patches" [ref=f26e116]
+            - generic [ref=f26e117]:
+              - generic [ref=f26e118]: Save 25% at 100+ pcs
+              - paragraph [ref=f26e119]: We turn your creative vision into beautifully crafted embroidered patches with vivid thread colors.
+          - generic [ref=f26e120]:
+            - heading "Custom Embroidered Patches" [level=3] [ref=f26e121]
+            - generic [ref=f26e122]: From $0.91
+        - link "Custom PVC Patches Custom PVC Patches $0.91 /per pc" [ref=f26e123] [cursor=pointer]:
+          - /url: /custom-patches/custom-pvc-patches
+          - img "Custom PVC Patches" [ref=f26e127]
+          - generic [ref=f26e128]:
+            - heading "Custom PVC Patches" [level=3] [ref=f26e129]
+            - paragraph [ref=f26e130]:
+              - text: $0.91
+              - generic [ref=f26e131]: /per pc
+        - link "Custom Chenille Patches Custom Chenille Patches $0.91 /per pc" [ref=f26e132] [cursor=pointer]:
+          - /url: /custom-patches/custom-chenille-patches
+          - img "Custom Chenille Patches" [ref=f26e136]
+          - generic [ref=f26e137]:
+            - heading "Custom Chenille Patches" [level=3] [ref=f26e138]
+            - paragraph [ref=f26e139]:
+              - text: $0.91
+              - generic [ref=f26e140]: /per pc
+        - link "Custom Woven Patches Custom Woven Patches $1.54 /per pc" [ref=f26e141] [cursor=pointer]:
+          - /url: /custom-patches/custom-woven-patches
+          - img "Custom Woven Patches" [ref=f26e145]
+          - generic [ref=f26e146]:
+            - heading "Custom Woven Patches" [level=3] [ref=f26e147]
+            - paragraph [ref=f26e148]:
+              - text: $1.54
+              - generic [ref=f26e149]: /per pc
+        - link "Custom Leather Patches Custom Leather Patches $1.74 /per pc" [ref=f26e150] [cursor=pointer]:
+          - /url: /custom-patches/custom-leather-patches
+          - img "Custom Leather Patches" [ref=f26e154]
+          - generic [ref=f26e155]:
+            - heading "Custom Leather Patches" [level=3] [ref=f26e156]
+            - paragraph [ref=f26e157]:
+              - text: $1.74
+              - generic [ref=f26e158]: /per pc
+        - link "Custom Printed Patches Custom Printed Patches $0.74 /per pc" [ref=f26e159] [cursor=pointer]:
+          - /url: /custom-patches/custom-printed-patches
+          - img "Custom Printed Patches" [ref=f26e163]
+          - generic [ref=f26e164]:
+            - heading "Custom Printed Patches" [level=3] [ref=f26e165]
+            - paragraph [ref=f26e166]:
+              - text: $0.74
+              - generic [ref=f26e167]: /per pc
+        - link "Custom No BG 3D Embroidery Custom No BG 3D Embroidery $1.58 /per pc" [ref=f26e168] [cursor=pointer]:
+          - /url: /custom-patches/custom-3d-embroidery-transfer
+          - img "Custom No BG 3D Embroidery" [ref=f26e172]
+          - generic [ref=f26e173]:
+            - heading "Custom No BG 3D Embroidery" [level=3] [ref=f26e174]
+            - paragraph [ref=f26e175]:
+              - text: $1.58
+              - generic [ref=f26e176]: /per pc
+        - link "Custom Sequin Patches Custom Sequin Patches $1.44 /per pc" [ref=f26e177] [cursor=pointer]:
+          - /url: /custom-patches/custom-sequin-patch
+          - img "Custom Sequin Patches" [ref=f26e181]
+          - generic [ref=f26e182]:
+            - heading "Custom Sequin Patches" [level=3] [ref=f26e183]
+            - paragraph [ref=f26e184]:
+              - text: $1.44
+              - generic [ref=f26e185]: /per pc
+    - generic [ref=f26e187]:
+      - heading "BEYOND PATCHES" [level=2] [ref=f26e188]
+      - paragraph [ref=f26e189]: Coins, Pins, Keychains & PVC Charms
+      - generic [ref=f26e190]:
+        - button "Custom Lapel Pins Custom Lapel Pins Get a quote" [ref=f26e191]:
+          - img "Custom Lapel Pins" [ref=f26e195]
+          - generic [ref=f26e196]:
+            - heading "Custom Lapel Pins" [level=3] [ref=f26e197]
+            - generic [ref=f26e198]: Get a quote
+        - button "Custom Challenge Coin Custom Challenge Coin Get a quote" [ref=f26e199]:
+          - img "Custom Challenge Coin" [ref=f26e203]
+          - generic [ref=f26e204]:
+            - heading "Custom Challenge Coin" [level=3] [ref=f26e205]
+            - generic [ref=f26e206]: Get a quote
+        - button "Custom Keychains Custom Keychains Get a quote" [ref=f26e207]:
+          - img "Custom Keychains" [ref=f26e211]
+          - generic [ref=f26e212]:
+            - heading "Custom Keychains" [level=3] [ref=f26e213]
+            - generic [ref=f26e214]: Get a quote
+        - button "Custom PVC Shoe Charms Custom PVC Shoe Charms Get a quote" [ref=f26e215]:
+          - img "Custom PVC Shoe Charms" [ref=f26e219]
+          - generic [ref=f26e220]:
+            - heading "Custom PVC Shoe Charms" [level=3] [ref=f26e221]
+            - generic [ref=f26e222]: Get a quote
+    - generic [ref=f26e230]:
+      - generic [ref=f26e231]: 3STEPS
+      - heading "HERE'S EXACTLY HOW WE MAKE" [level=2] [ref=f26e232]: HERE'SEXACTLY HOWWE MAKE
+      - paragraph [ref=f26e233]: From your artwork or idea to a patch in hand. Three steps, no surprises, no setup fees.
+      - generic [ref=f26e234]:
+        - generic [ref=f26e235]:
+          - generic [ref=f26e236]: Sketch
+          - img "Sketch step" [ref=f26e238]
+        - generic [ref=f26e239]:
+          - generic [ref=f26e240]: Mockup
+          - img "Mockup step" [ref=f26e242]
+        - generic [ref=f26e243]:
+          - generic [ref=f26e244]: Patch
+          - img "Patch step" [ref=f26e246]
+    - generic [ref=f26e251]:
+      - generic [ref=f26e252]:
+        - img [ref=f26e253]:
+          - generic [ref=f26e255]: QUICK APPLY
+        - generic [ref=f26e256]: Quick Apply
+        - heading "IRON-ON MAGIC" [level=2] [ref=f26e257]
+      - generic [ref=f26e258]:
+        - img "Example iron-on patch" [ref=f26e259]
+        - generic [ref=f26e260]:
+          - generic [ref=f26e261]: "1"
+          - heading "LET'S GET STARTED" [level=3] [ref=f26e262]:
+            - generic [ref=f26e263]: LET'S
+            - generic [ref=f26e264]: GET
+            - generic [ref=f26e265]: STARTED
+        - generic [ref=f26e266]:
+          - generic [ref=f26e267]: "2"
+          - heading "YOUR SATISFACTION COMES FIRST" [level=3] [ref=f26e268]:
+            - generic [ref=f26e269]: YOUR SATISFACTION
+            - generic [ref=f26e270]: COMES FIRST
+        - generic [ref=f26e271]:
+          - generic [ref=f26e272]: "3"
+          - heading "PRECISION CRAFT BEGINS" [level=3] [ref=f26e273]:
+            - generic [ref=f26e274]: PRECISION
+            - generic [ref=f26e275]: CRAFT
+            - generic [ref=f26e276]: BEGINS
+        - generic [ref=f26e277]:
+          - generic [ref=f26e278]: "4"
+          - heading "DELIVERY AT YOUR DOORSTEP READY TO BE IMPRESSED?" [level=3] [ref=f26e279]:
+            - generic [ref=f26e280]: DELIVERY AT YOUR DOORSTEP
+            - generic [ref=f26e281]: READY TO BE IMPRESSED?
+      - button "Get My Free Quote" [ref=f26e284]
+    - generic [ref=f26e289]:
+      - heading "FAQS" [level=2] [ref=f26e290]
+      - generic [ref=f26e291]:
+        - generic [ref=f26e292]:
+          - button "1 How much do custom patches cost?" [ref=f26e293]:
+            - generic [ref=f26e294]: "1"
+            - generic [ref=f26e295]: How much do custom patches cost?
+          - paragraph [ref=f26e299]: Custom patches start from $0.91 per piece for a 2x2-inch embroidered design at 1,000 pieces. Smaller orders cost more per piece. Pricing depends on patch type, size, and quantity. Free digital mockup, no setup fees. Economy delivery saves 10 percent off the order total.
+        - generic [ref=f26e300]:
+          - button "2 Embroidered vs woven vs chenille vs PVC. Which should I choose?" [ref=f26e301]:
+            - generic [ref=f26e302]: "2"
+            - generic [ref=f26e303]: Embroidered vs woven vs chenille vs PVC. Which should I choose?
+          - paragraph [ref=f26e306]: Embroidered suits detailed logos and text. Woven is best for very fine detail and small text. Chenille gives a bold, varsity-style look. PVC is durable and weatherproof for outdoor gear. Tell us your design and we'll recommend the right type.
+        - generic [ref=f26e307]:
+          - button "3 What's your turnaround time?" [ref=f26e308]:
+            - generic [ref=f26e309]: "3"
+            - generic [ref=f26e310]: What's your turnaround time?
+          - paragraph [ref=f26e313]: Standard production is 12-14 days from design approval to delivery. Rush production is available in 4-7 days for urgent collection launches.
+        - generic [ref=f26e314]:
+          - button "4 What are your minimum order quantities?" [ref=f26e315]:
+            - generic [ref=f26e316]: "4"
+            - generic [ref=f26e317]: What are your minimum order quantities?
+          - paragraph [ref=f26e320]: MOQ starts at just 50 units, perfect for testing new designs or limited releases. Every order includes digitization, sampling, production, quality inspection, and shipping.
+    - generic [ref=f26e322]:
+      - link [ref=f26e323] [cursor=pointer]:
+        - /url: /
+        - heading "MY CUSTOM PATCHES!" [level=2] [ref=f26e324]: MY CUSTOMPATCHES!
+      - generic [ref=f26e325]:
+        - generic [ref=f26e326]:
+          - heading "Our Patches" [level=3] [ref=f26e327]
+          - list [ref=f26e328]:
+            - listitem [ref=f26e329]:
+              - link "Custom Embroidered Patches" [ref=f26e330] [cursor=pointer]:
+                - /url: /custom-patches/custom-embroidered-patches
+            - listitem [ref=f26e331]:
+              - link "Custom Chenille Patches" [ref=f26e332] [cursor=pointer]:
+                - /url: /custom-patches/custom-chenille-patches
+            - listitem [ref=f26e333]:
+              - link "Custom PVC Patches" [ref=f26e334] [cursor=pointer]:
+                - /url: /custom-patches/custom-pvc-patches
+            - listitem [ref=f26e335]:
+              - link "Custom Woven Patches" [ref=f26e336] [cursor=pointer]:
+                - /url: /custom-patches/custom-woven-patches
+            - listitem [ref=f26e337]:
+              - link "Custom Leather Patches" [ref=f26e338] [cursor=pointer]:
+                - /url: /custom-patches/custom-leather-patches
+            - listitem [ref=f26e339]:
+              - link "Custom Printed Patches" [ref=f26e340] [cursor=pointer]:
+                - /url: /custom-patches/custom-printed-patches
+        - generic [ref=f26e341]:
+          - heading "Company" [level=3] [ref=f26e342]
+          - list [ref=f26e343]:
+            - listitem [ref=f26e344]:
+              - link "About Us" [ref=f26e345] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f26e346]:
+              - link "Blogs & Insights" [ref=f26e347] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=f26e348]:
+              - link "Contact Us" [ref=f26e349] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f26e350]:
+              - link "FAQ" [ref=f26e351] [cursor=pointer]:
+                - /url: /#faq
+        - generic [ref=f26e352]:
+          - heading "Get In Touch" [level=3] [ref=f26e353]
+          - list [ref=f26e354]:
+            - listitem [ref=f26e355]: admin@mycustompatches.com
+            - listitem [ref=f26e356]: 302-773-8982
+            - listitem [ref=f26e357]: 701 Tillery St Ste 12, Austin TX 78702
+          - generic [ref=f26e358]:
+            - link "Facebook" [ref=f26e359] [cursor=pointer]:
+              - /url: "#"
+            - link "Instagram" [ref=f26e362] [cursor=pointer]:
+              - /url: https://www.instagram.com/mycustompatches/
+            - link "Twitter" [ref=f26e366] [cursor=pointer]:
+              - /url: "#"
+            - link "LinkedIn" [ref=f26e369] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=f26e374]:
+        - paragraph [ref=f26e375]: © 2026 My Custom Patches. All rights reserved.
+        - generic [ref=f26e376]:
+          - link "Privacy Policy" [ref=f26e377] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms of Service" [ref=f26e378] [cursor=pointer]:
+            - /url: /terms-of-service
+  - button "Open Next.js Dev Tools" [ref=f26e384] [cursor=pointer]

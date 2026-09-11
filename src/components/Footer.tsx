@@ -58,7 +58,7 @@ export function Footer() {
 
           <div>
             <h3 className="font-mouse text-sm text-brand-blue mb-4">Get In Touch</h3>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm text-gray-600 break-words">
               <li>admin@mycustompatches.com</li>
               <li>302-773-8982</li>
               <li>701 Tillery St Ste 12, Austin TX 78702</li>

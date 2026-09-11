@@ -1,0 +1,181 @@
+- generic [active] [ref=f16e1]:
+  - main [ref=f16e2]:
+    - navigation [ref=f16e3]:
+      - generic [ref=f16e4]:
+        - link "MY CUSTOM PATCHES" [ref=f16e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f16e6]: MY CUSTOM
+          - generic [ref=f16e7]: PATCHES
+        - generic [ref=f16e8]:
+          - button "Chat Now" [ref=f16e9]
+          - button "Toggle menu" [ref=f16e12]: Menu
+      - generic:
+        - list:
+          - listitem:
+            - link "Custom Patches":
+              - /url: /custom-patches
+          - listitem:
+            - link "About Us":
+              - /url: /about
+          - listitem:
+            - link "Blogs & Insights":
+              - /url: /blog
+          - listitem:
+            - link "Contact Us":
+              - /url: /contact
+        - button "Get Instant Quote"
+        - paragraph: EST. 2014 · Austin, United States
+    - generic [ref=f16e14]:
+      - generic: PATCHES
+      - generic [ref=f16e15]:
+        - generic [ref=f16e16]: CUSTOM
+        - img "Examples of custom embroidered, chenille and PVC patches" [ref=f16e18]
+        - generic [ref=f16e19]:
+          - paragraph [ref=f16e20]: From embroidered to PVC, woven, chenille and leather.Every patch type, any quantity, delivered in 12–14 days (rush 4–7 days).Free digital mockup included. No setup fees.
+          - generic [ref=f16e21]:
+            - paragraph [ref=f16e22]: Rated 4.7/5 by 75+ customers on Trustpilot.
+            - generic [ref=f16e23]:
+              - img "ASI" [ref=f16e24]
+              - img "Trustpilot" [ref=f16e25]
+              - img "Google" [ref=f16e26]
+              - img "Etsy" [ref=f16e27]
+        - generic [ref=f16e28]:
+          - button "Get Custom Quote" [ref=f16e29]
+          - button "See All Products" [ref=f16e30]
+    - generic [ref=f16e33]:
+      - heading "Get Your Free Quote & 12-24h Mockup" [level=3] [ref=f16e36]
+      - generic [ref=f16e37]:
+        - generic [ref=f16e38]:
+          - textbox "Name*" [ref=f16e39]
+          - textbox "Email*" [ref=f16e40]
+        - generic [ref=f16e41]:
+          - textbox "Phone Number*" [ref=f16e42]
+          - spinbutton "Quantity (min 5)*" [ref=f16e43]
+        - generic [ref=f16e44]:
+          - textbox "Size or Placement*" [ref=f16e45]
+          - generic [ref=f16e46]: Patch Type
+          - combobox "Patch Type" [ref=f16e47]:
+            - option "Patch Type" [selected]
+            - option "Custom Embroidered Patches"
+            - option "Custom Chenille Patches"
+            - option "Custom Woven Patches"
+            - option "Custom Printed Patches"
+            - option "Custom PVC Patches"
+            - option "Custom Leather Patches"
+            - option "Custom 3D Embroidery Transfer"
+            - option "Custom Sequin Patches"
+          - generic [ref=f16e48]: Backing Type
+          - combobox "Backing Type" [ref=f16e49]:
+            - option "Select Backing" [selected]
+            - option "Iron-on"
+            - option "Sew-on"
+            - option "Velcro"
+            - option "Adhesive"
+            - option "Sticker"
+            - option "Plain (No Backing)"
+        - textbox "How did you hear about us? (optional)" [ref=f16e50]
+        - 'textbox "Instructions: Text \"Panda Patches\" white background..." [ref=f16e51]'
+        - generic [ref=f16e52] [cursor=pointer]:
+          - button "Upload design file (SVG, PNG, JPG or PDF)" [ref=f16e53]
+          - generic [ref=f16e54]:
+            - paragraph [ref=f16e58]: Drop files here or
+            - generic [ref=f16e59]: Select Files
+        - button "Get My Free Quote" [ref=f16e60]
+    - generic [ref=f16e65]:
+      - generic [ref=f16e66]:
+        - generic [ref=f16e67]:
+          - heading "REAL ORDER FROM REAL CUSTOMERS" [level=2] [ref=f16e68]: REAL ORDERFROM REALCUSTOMERS
+          - paragraph [ref=f16e69]: Real Orders. Real people. See why customers keep coming back.
+          - button "View More" [ref=f16e70]
+        - generic [ref=f16e72] [cursor=pointer]:
+          - img "Real customer order" [ref=f16e75]
+          - generic: Hover to Play
+      - generic [ref=f16e77]:
+        - generic [ref=f16e78]:
+          - generic [ref=f16e79]: They're Legit!!
+          - paragraph [ref=f16e80]: They're legit!!! I saw the reviews and asked ChatGPT before ordering. My patches arrived on time and a few were messed up. I sent 1 email with pictures and they mailed me more than I said were unusable. I'll be back for more! Good quality!
+          - generic [ref=f16e81]:
+            - generic [ref=f16e82]: BB
+            - generic [ref=f16e83]:
+              - paragraph [ref=f16e84]: BILLY BOB J.
+              - paragraph [ref=f16e85]: US · Feb 21, 2026
+        - generic [ref=f16e86]:
+          - generic [ref=f16e87]: Epic Experience
+          - paragraph [ref=f16e88]: The quality is outstanding, durable, vibrant, and exactly what I envisioned. From my very first message, the team was friendly, responsive, and incredibly helpful. They checked in to make sure I was satisfied, and their customer service didn't stop after delivery. I highly recommend them!
+          - generic [ref=f16e89]:
+            - generic [ref=f16e90]: SP
+            - generic [ref=f16e91]:
+              - paragraph [ref=f16e92]: SELENA P.
+              - paragraph [ref=f16e93]: US · Feb 16, 2026
+        - generic [ref=f16e94]:
+          - generic [ref=f16e95]: Great Quality
+          - paragraph [ref=f16e96]: My experience was quite positive. They were impressively on time with both delivery and service. The quality of the material was excellent. It felt sturdy yet flexible, which is essential for long-lasting wear. I would recommend Panda Patches for anyone looking for incredibly reliable service.
+          - generic [ref=f16e97]:
+            - generic [ref=f16e98]: TS
+            - generic [ref=f16e99]:
+              - paragraph [ref=f16e100]: TAYE S.
+              - paragraph [ref=f16e101]: US · Nov 28, 2025
+    - generic [ref=f16e112]:
+      - link [ref=f16e113] [cursor=pointer]:
+        - /url: /
+        - heading "MY CUSTOM PATCHES!" [level=2] [ref=f16e114]: MY CUSTOMPATCHES!
+      - generic [ref=f16e115]:
+        - generic [ref=f16e116]:
+          - heading "Our Patches" [level=3] [ref=f16e117]
+          - list [ref=f16e118]:
+            - listitem [ref=f16e119]:
+              - link "Custom Embroidered Patches" [ref=f16e120] [cursor=pointer]:
+                - /url: /custom-patches/custom-embroidered-patches
+            - listitem [ref=f16e121]:
+              - link "Custom Chenille Patches" [ref=f16e122] [cursor=pointer]:
+                - /url: /custom-patches/custom-chenille-patches
+            - listitem [ref=f16e123]:
+              - link "Custom PVC Patches" [ref=f16e124] [cursor=pointer]:
+                - /url: /custom-patches/custom-pvc-patches
+            - listitem [ref=f16e125]:
+              - link "Custom Woven Patches" [ref=f16e126] [cursor=pointer]:
+                - /url: /custom-patches/custom-woven-patches
+            - listitem [ref=f16e127]:
+              - link "Custom Leather Patches" [ref=f16e128] [cursor=pointer]:
+                - /url: /custom-patches/custom-leather-patches
+            - listitem [ref=f16e129]:
+              - link "Custom Printed Patches" [ref=f16e130] [cursor=pointer]:
+                - /url: /custom-patches/custom-printed-patches
+        - generic [ref=f16e131]:
+          - heading "Company" [level=3] [ref=f16e132]
+          - list [ref=f16e133]:
+            - listitem [ref=f16e134]:
+              - link "About Us" [ref=f16e135] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f16e136]:
+              - link "Blogs & Insights" [ref=f16e137] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=f16e138]:
+              - link "Contact Us" [ref=f16e139] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f16e140]:
+              - link "FAQ" [ref=f16e141] [cursor=pointer]:
+                - /url: /#faq
+        - generic [ref=f16e142]:
+          - heading "Get In Touch" [level=3] [ref=f16e143]
+          - list [ref=f16e144]:
+            - listitem [ref=f16e145]: admin@mycustompatches.com
+            - listitem [ref=f16e146]: 302-773-8982
+            - listitem [ref=f16e147]: 701 Tillery St Ste 12, Austin TX 78702
+          - generic [ref=f16e148]:
+            - link "Facebook" [ref=f16e149] [cursor=pointer]:
+              - /url: "#"
+            - link "Instagram" [ref=f16e152] [cursor=pointer]:
+              - /url: https://www.instagram.com/mycustompatches/
+            - link "Twitter" [ref=f16e156] [cursor=pointer]:
+              - /url: "#"
+            - link "LinkedIn" [ref=f16e159] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=f16e164]:
+        - paragraph [ref=f16e165]: © 2026 My Custom Patches. All rights reserved.
+        - generic [ref=f16e166]:
+          - link "Privacy Policy" [ref=f16e167] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms of Service" [ref=f16e168] [cursor=pointer]:
+            - /url: /terms-of-service
+  - button "Open Next.js Dev Tools" [ref=f16e174] [cursor=pointer]

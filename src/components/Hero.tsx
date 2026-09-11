@@ -19,7 +19,7 @@ export function Hero({ onOpenQuote, onSeeAllProducts }: HeroProps) {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="rotate-[6deg] inline-block rounded-lg border-2 border-brand-blue-light bg-brand-blue px-5 py-2 font-display text-3xl sm:text-4xl text-brand-blue-light shadow-lg">
+        <div className="rotate-[6deg] inline-block rounded-lg border-2 border-brand-blue-light bg-brand-blue px-5 py-2 font-display text-3xl sm:text-4xl text-white shadow-lg">
           CUSTOM
         </div>
 

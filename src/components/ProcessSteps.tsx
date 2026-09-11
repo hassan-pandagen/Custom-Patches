@@ -58,7 +58,7 @@ export function ProcessSteps() {
           WE MAKE
         </h2>
 
-        <p className="mt-6 max-w-xl font-mouse text-xl sm:max-w-none sm:whitespace-nowrap sm:text-2xl text-black font-bold">
+        <p className="mt-6 max-w-xl font-mouse text-xl sm:max-w-none sm:text-2xl lg:whitespace-nowrap text-black font-bold">
           From your artwork or idea to a patch in hand. Three steps, no surprises, no setup fees.
         </p>
 

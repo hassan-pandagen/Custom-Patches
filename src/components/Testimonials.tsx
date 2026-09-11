@@ -11,7 +11,7 @@ const TESTIMONIALS = [
     location: "US",
     date: "Feb 21, 2026",
     headline: "They're Legit!!",
-    tilt: "lg:-rotate-3",
+    tilt: "lg:rotate-4",
     quote:
       "They're legit!!! I saw the reviews and asked ChatGPT before ordering. My patches arrived on time and a few were messed up. I sent 1 email with pictures and they mailed me more than I said were unusable. I'll be back for more! Good quality!",
   },
@@ -21,7 +21,7 @@ const TESTIMONIALS = [
     location: "US",
     date: "Feb 16, 2026",
     headline: "Epic Experience",
-    tilt: "lg:rotate-1",
+    tilt: "lg:-rotate-4",
     quote:
       "The quality is outstanding, durable, vibrant, and exactly what I envisioned. From my very first message, the team was friendly, responsive, and incredibly helpful. They checked in to make sure I was satisfied, and their customer service didn't stop after delivery. I highly recommend them!",
   },
@@ -31,7 +31,7 @@ const TESTIMONIALS = [
     location: "US",
     date: "Nov 28, 2025",
     headline: "Great Quality",
-    tilt: "lg:rotate-4",
+    tilt: "lg:rotate-5",
     quote:
       "My experience was quite positive. They were impressively on time with both delivery and service. The quality of the material was excellent. It felt sturdy yet flexible, which is essential for long-lasting wear. I would recommend Panda Patches for anyone looking for incredibly reliable service.",
   },
@@ -39,7 +39,7 @@ const TESTIMONIALS = [
 
 export function Testimonials() {
   return (
-    <section className="relative overflow-hidden bg-white pt-16 pb-40 lg:pt-32 lg:pb-48">
+    <section id="testimonials" className="relative overflow-hidden bg-white pt-16 pb-40 lg:pt-32 lg:pb-48">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center mb-14">
           <div>
@@ -77,7 +77,7 @@ export function Testimonials() {
           </div>
         </div>
 
-        <div className="relative grid gap-6 md:grid-cols-3">
+        <div className="relative grid gap-8 md:grid-cols-3 lg:gap-7">
           <Image
             src="/assets/Images_22.png"
             alt=""
@@ -85,22 +85,22 @@ export function Testimonials() {
             height={214}
             aria-hidden="true"
             unoptimized
-            className="pointer-events-none absolute -top-24 left-2 z-20 hidden w-28 lg:block"
+            className="pointer-events-none absolute -top-28 left-[25%] z-20 hidden w-32 lg:block"
           />
 
           {TESTIMONIALS.map((t) => (
             <div
               key={t.name}
-              className={`flex flex-col rounded-3xl bg-black p-6 shadow-xl transition-transform duration-300 hover:rotate-0 ${t.tilt}`}
+              className={`flex min-h-[340px] flex-col rounded-[18px] bg-black p-7 shadow-2xl transition-transform duration-300 hover:rotate-0 lg:min-h-[365px] ${t.tilt}`}
             >
-              <span className="inline-block self-start rounded-full border border-white px-4 py-1.5 font-display text-sm text-white mb-4">
+              <span className="mb-5 inline-block self-start rounded-[50%] border-2 border-white px-5 py-2 font-mouse text-xl leading-none text-white">
                 {t.headline}
               </span>
-              <p className="font-mouse text-sm text-white/90 leading-relaxed grow">
+              <p className="grow font-mouse text-base leading-relaxed text-white/90">
                 {t.quote}
               </p>
-              <div className="mt-6 pt-4 border-t border-white/15 flex items-center gap-3">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-lime font-mouse text-xs text-black">
+              <div className="mt-6 flex items-center gap-3 border-t border-white/15 pt-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-lime font-mouse text-sm text-black">
                   {t.initials}
                 </span>
                 <div>
