@@ -5,20 +5,24 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const FAQS = [
   {
-    q: "How much do custom patches cost?",
-    a: "Custom patches start from $0.91 per piece for a 2x2-inch embroidered design at 1,000 pieces. Smaller orders cost more per piece. Pricing depends on patch type, size, and quantity. Free digital mockup, no setup fees. Economy delivery saves 10 percent off the order total.",
+    q: "What is heat press transfer technology and why is it better for clothing brands?",
+    a: "Heat press transfer technology applies embroidered patches in 10-15 seconds using commercial heat press, looking identical to direct embroidery. For clothing brands, this means dramatically faster production (150+ garments/hour vs 6-12/hour), perfect placement consistency, zero defects reaching customers, and significantly reduced labor costs while maintaining premium quality.",
   },
   {
-    q: "Embroidered vs woven vs chenille vs PVC. Which should I choose?",
-    a: "Embroidered suits detailed logos and text. Woven is best for very fine detail and small text. Chenille gives a bold, varsity-style look. PVC is durable and weatherproof for outdoor gear. Tell us your design and we'll recommend the right type.",
+    q: "What's your minimum order quantity and turnaround time?",
+    a: "MOQ starts at just 50 units, perfect for testing new designs or limited releases. Standard production is 12-14 days from design approval to delivery. Rush production available in 4-7 days for urgent collection launches. All orders include digitization, sampling, production, quality inspection, and shipping.",
   },
   {
-    q: "What's your turnaround time?",
-    a: "Standard production is 12-14 days from design approval to delivery. Rush production is available in 4-7 days for urgent collection launches.",
+    q: "Can you match our specific Pantone colors and brand guidelines?",
+    a: "Yes. We maintain comprehensive thread charts with hundreds of colors and can match specific Pantone references. We'll provide thread color samples for your approval before production begins, ensuring perfect brand consistency across all your patches. Our quality control process verifies color matching on every production run.",
   },
   {
-    q: "What are your minimum order quantities?",
-    a: "MOQ starts at just 50 units, perfect for testing new designs or limited releases. Every order includes digitization, sampling, production, quality inspection, and shipping.",
+    q: "How durable are heat press patches compared to sewn-on patches?",
+    a: "Our heat press patches undergo rigorous wash testing and withstand 50+ commercial wash cycles without lifting or degrading. The industrial-strength adhesive creates permanent bonds equivalent to traditional sewn applications, meeting US quality standards for commercial apparel. Many clothing brands report patches lasting the lifetime of the garment.",
+  },
+  {
+    q: "What file format do you need and do you offer design services?",
+    a: "Vector files (AI, EPS, PDF) work best. High-resolution raster images (PNG, JPG at 300+ DPI) also acceptable. If you only have low-resolution files or concepts, our in-house design team can recreate or develop them for $75-200 depending on complexity. We'll provide mockups for approval before production.",
   },
 ];
 
@@ -30,27 +34,35 @@ export function FaqSection() {
   };
 
   return (
-    <section id="faq" className="bg-white pt-4 pb-20 lg:pb-28">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <h2 className="text-center font-display text-4xl sm:text-5xl text-black mb-10">FAQS</h2>
+    <section id="faq" className="bg-white pt-6 pb-6 md:py-16">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6">
+        <h2 className="text-center text-2xl md:text-3xl font-extrabold mb-4 uppercase tracking-wide">
+          <span className="text-brand-dark">FREQUENTLY ASKED </span>
+          <span className="text-brand-orange">QUESTIONS</span>
+        </h2>
+        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8 md:mb-12 text-sm md:text-base">
+          Common questions from clothing brands about our custom patches, heat press technology, and production process.
+        </p>
 
         <div className="space-y-4">
           {FAQS.map((faq, idx) => (
-            <div key={faq.q} className="rounded-2xl bg-black overflow-hidden">
+            <div
+              key={idx}
+              className={`border rounded-lg overflow-hidden transition-all duration-300 bg-white ${
+                openIndex === idx ? "border-brand-orange shadow-md" : "border-gray-200"
+              }`}
+            >
               <button
                 onClick={() => toggle(idx)}
-                className="w-full flex items-center gap-4 p-5 text-left"
+                className="w-full flex items-center justify-between p-5 text-left focus:outline-hidden"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-white font-mouse text-xs text-white">
-                  {idx + 1}
-                </span>
-                <span className="grow font-mouse text-sm sm:text-base text-white">
+                <span className="font-semibold text-sm md:text-base text-brand-dark pr-8">
                   {faq.q}
                 </span>
                 {openIndex === idx ? (
-                  <ChevronUp className="h-5 w-5 text-brand-mint shrink-0" />
+                  <ChevronUp className="h-5 w-5 text-brand-orange shrink-0" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-white/50 shrink-0" />
+                  <ChevronDown className="h-5 w-5 text-gray-400 shrink-0" />
                 )}
               </button>
 
@@ -59,9 +71,9 @@ export function FaqSection() {
                   openIndex === idx ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="pr-5 pb-5 pl-[68px] font-mouse text-sm text-white/70 leading-relaxed">
+                <div className="p-5 pt-0 text-sm text-gray-600 leading-relaxed">
                   {faq.a}
-                </p>
+                </div>
               </div>
             </div>
           ))}

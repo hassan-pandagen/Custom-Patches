@@ -1,59 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { WaveDivider } from "./ui/WaveDivider";
+import { Button } from "./ui/Button";
 
-// Each step is set word-by-word: a plain black lead-in, one oversized mint hero
-// word, then a black tail — matching the comp's typographic rhythm.
-const SIZES = {
-  sm: "text-2xl sm:text-3xl",
-  md: "text-3xl sm:text-4xl",
-  xl: "text-6xl sm:text-7xl",
-} as const;
+interface QuoteButtonProps {
+  onClick: () => void;
+}
 
-type Line = { t: string; tone: "dark" | "mint"; size: keyof typeof SIZES };
-
-// Positions are for the lg+ collage; below lg every step falls back into normal flow.
-const STEPS: { id: number; place: string; lines: Line[] }[] = [
-  {
-    id: 1,
-    place: "lg:left-0 lg:top-[8%] lg:w-[280px] lg:-rotate-6",
-    lines: [
-      { t: "Let's", tone: "dark", size: "sm" },
-      { t: "Get", tone: "mint", size: "xl" },
-      { t: "Started", tone: "dark", size: "md" },
-    ],
-  },
-  {
-    id: 2,
-    place: "lg:left-[9%] lg:top-[70%] lg:w-[450px] lg:-rotate-3",
-    lines: [
-      { t: "Your Satisfaction", tone: "mint", size: "md" },
-      { t: "Comes First", tone: "mint", size: "md" },
-    ],
-  },
-  {
-    id: 3,
-    place: "lg:right-0 lg:top-[8%] lg:w-[300px] lg:rotate-3",
-    lines: [
-      { t: "Precision", tone: "dark", size: "md" },
-      { t: "Craft", tone: "mint", size: "xl" },
-      { t: "Begins", tone: "dark", size: "md" },
-    ],
-  },
-  {
-    id: 4,
-    place: "lg:right-[2%] lg:top-[50%] lg:w-[330px] lg:rotate-2",
-    lines: [
-      { t: "Delivery At Your Doorstep", tone: "mint", size: "md" },
-      { t: "Ready To Be Impressed?", tone: "mint", size: "md" },
-    ],
-  },
-];
-
-// Chunky mint lettering with a heavy black keyline, as in the comp.
-const OUTLINE = { WebkitTextStroke: "4px #000", paintOrder: "stroke" } as const;
-const OUTLINE_XL = { WebkitTextStroke: "9px #000", paintOrder: "stroke" } as const;
+function QuoteBtn({ onClick }: QuoteButtonProps) {
+  return (
+    <Button onClick={onClick} className="bg-black text-white hover:bg-brand-orange hover:text-black border border-brand-orange/30 px-6 py-2 h-auto text-xs uppercase tracking-widest font-bold mt-4 rounded-none skew-x-[-10deg] transition-all duration-300">
+      <span className="skew-x-[10deg] text-brand-orange mr-2">❝</span>
+      <span className="skew-x-[10deg]">Get Quote Now</span>
+    </Button>
+  );
+}
 
 interface QueenCTAProps {
   onOpenQuote: () => void;
@@ -61,94 +22,89 @@ interface QueenCTAProps {
 
 export function QueenCTA({ onOpenQuote }: QueenCTAProps) {
   return (
-    <section className="relative bg-brand-lime pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <svg viewBox="0 0 320 80" className="mx-auto h-16 w-72 overflow-visible" aria-hidden="true">
-            <path id="quick-apply-arc" d="M14 74 A 400 400 0 0 1 306 74" fill="none" />
-            <text
-              className="font-display"
-              fill="var(--color-brand-mint)"
-              stroke="#000"
-              strokeWidth={8}
-              strokeLinejoin="round"
-              paintOrder="stroke"
-              fontSize={34}
-            >
-              <textPath href="#quick-apply-arc" startOffset="50%" textAnchor="middle">
-                QUICK APPLY
-              </textPath>
-            </text>
-          </svg>
-          <span className="sr-only">Quick Apply</span>
-          <h2 className="mt-2 font-display text-4xl sm:text-6xl text-black">IRON-ON MAGIC</h2>
+    <section className="bg-[#EDEBE8] py-12 md:py-16 overflow-hidden">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 relative">
+
+        {/* Header */}
+        <div className="text-center mb-8 relative z-10">
+          <h2 className="text-2xl md:text-4xl font-extrabold uppercase tracking-wide leading-tight mb-4">
+            <span className="text-brand-dark">YOUR PRODUCTION PARTNER </span>
+            <span className="text-brand-orange">FROM DESIGN TO <br/>
+            FINISHED PATCHES</span>
+          </h2>
+          <p className="text-gray-600 max-w-3xl mx-auto text-sm">
+            Four key stages where we handle the complexity so you can focus on growing your clothing brand.
+          </p>
         </div>
 
-        <div className="relative mt-12 flex flex-col items-center gap-10 lg:mt-16 lg:h-[680px] lg:gap-0">
-          <svg
-            className="pointer-events-none absolute left-1/2 top-[38%] hidden h-[320px] w-[680px] -translate-x-1/2 lg:block"
-            viewBox="0 0 680 320"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M24 150 C70 108 118 52 166 26 C194 11 214 15 220 36 C230 70 176 132 130 176 C96 208 74 240 90 258 C112 282 156 258 200 230 L470 44 C508 20 536 20 550 44 C568 76 512 130 458 176 C412 216 384 250 402 272 C424 296 464 268 508 240 L660 150"
-              stroke="#fff"
-              strokeWidth="22"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+        {/* MAIN LAYOUT */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-4 items-center">
+          
+          {/* --- LEFT COLUMN --- */}
+          <div className="flex flex-col gap-8 lg:gap-32 text-center lg:text-right order-2 lg:order-1">
+             <div className="pt-0 md:pt-24">
+               <h3 className="font-bold text-lg md:text-xl text-brand-dark">Submit Your Design</h3>
+               <p className="text-brand-orange text-xs font-bold uppercase mb-2">Professional Digitization Included</p>
+               <p className="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto lg:ml-auto lg:mr-0">
+                 Send us your logo or artwork in any format. Our team digitizes it for optimal patch production with exact specifications.
+               </p>
+               <div className="flex justify-center lg:justify-end">
+                 <QuoteBtn onClick={onOpenQuote} />
+               </div>
+             </div>
 
-          <Image
-            src="/assets/iron-on-antisocial.png"
-            alt="Example iron-on patch"
-            width={424}
-            height={313}
-            className="relative z-10 w-56 h-auto rotate-6 drop-shadow-xl sm:w-64 lg:absolute lg:left-1/2 lg:top-0 lg:w-[300px] lg:-translate-x-1/2"
-          />
+             <div className="pb-0 md:pb-24">
+               <h3 className="font-bold text-lg md:text-xl text-brand-dark">Receive Ready Patches</h3>
+               <p className="text-brand-orange text-xs font-bold uppercase mb-2">12 to 14 Days Standard Turnaround</p>
+               <p className="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto lg:ml-auto lg:mr-0">
+                 Your heat press ready patches arrive inspected and verified. Apply in 10 to 15 seconds with professional results every time.
+               </p>
+               <div className="flex justify-center lg:justify-end">
+                 <QuoteBtn onClick={onOpenQuote} />
+               </div>
+             </div>
+          </div>
 
-          {STEPS.map((step) => (
-            <div key={step.id} className={`relative z-10 max-w-sm text-center lg:absolute lg:max-w-none lg:text-left ${step.place}`}>
-              <span className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-mint font-display text-lg text-black ring-3 ring-black">
-                {step.id}
-              </span>
-              <h3 className="font-display leading-[0.85]">
-                {step.lines.map((line) => (
-                  <span
-                    key={line.t}
-                    className={`block ${SIZES[line.size]} ${line.tone === "mint" ? "text-brand-mint" : "text-black"}`}
-                    style={line.tone === "mint" ? (line.size === "xl" ? OUTLINE_XL : OUTLINE) : undefined}
-                  >
-                    {line.t.toUpperCase()}
-                  </span>
-                ))}
-              </h3>
-            </div>
-          ))}
+          {/* --- CENTER IMAGE --- */}
+          <div className="relative flex justify-center order-1 lg:order-2 my-4 lg:my-0">
+             <Image
+               src="/assets/queen-illustration.png"
+               alt="Queen Illustration"
+               width={450}
+               height={500}
+               sizes="(max-width: 768px) 200px, (max-width: 1024px) 400px, 450px"
+               className="w-[200px] md:w-[400px] lg:w-[450px] object-contain z-10"
+               loading="lazy"
+             />
+          </div>
 
-          <Image
-            src="/assets/satisfaction-photo.png"
-            alt=""
-            width={318}
-            height={378}
-            aria-hidden="true"
-            className="relative z-[5] w-44 h-auto lg:absolute lg:left-[14%] lg:top-[44%] lg:w-[210px]"
-          />
+          {/* --- RIGHT COLUMN --- */}
+          <div className="flex flex-col gap-8 lg:gap-32 text-center lg:text-left order-3">
+             <div className="pt-0 md:pt-24">
+               <h3 className="font-bold text-lg md:text-xl text-brand-dark">Approve Your Mockup</h3>
+               <p className="text-brand-orange text-xs font-bold uppercase mb-2">Free Revisions Until Perfect</p>
+               <p className="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto lg:mx-0">
+                 Review your digital mockup with exact thread colors and sizing. We make changes until you approve the final design for production.
+               </p>
+               <div className="flex justify-center lg:justify-start">
+                 <QuoteBtn onClick={onOpenQuote} />
+               </div>
+             </div>
+
+             <div className="pb-0 md:pb-24">
+               <h3 className="font-bold text-lg md:text-xl text-brand-dark">Production Begins</h3>
+               <p className="text-brand-orange text-xs font-bold uppercase mb-2">US Quality Standards</p>
+               <p className="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto lg:mx-0">
+                 Once approved, we manufacture your patches with rigorous quality control. Every patch is inspected to meet commercial apparel standards.
+               </p>
+               <div className="flex justify-center lg:justify-start">
+                 <QuoteBtn onClick={onOpenQuote} />
+               </div>
+             </div>
+          </div>
+
         </div>
 
-        <div className="mt-14 flex justify-center">
-          <button
-            onClick={onOpenQuote}
-            className="rounded-full bg-black px-8 py-3 font-mouse text-sm text-white hover:bg-brand-mint hover:text-black transition-colors"
-          >
-            Get My Free Quote
-          </button>
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 translate-y-px">
-        <WaveDivider fill="white" />
       </div>
     </section>
   );

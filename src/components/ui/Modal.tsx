@@ -36,10 +36,10 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
       />
 
       {/* Content */}
-      <div className="relative z-50 w-full max-w-lg rounded-2xl bg-black p-8 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative z-50 w-full max-w-lg rounded-2xl bg-brand-dark p-8 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-full p-1 text-gray-400 hover:bg-white/10 hover:text-gray-300 transition-colors"
+          className="absolute right-4 top-4 rounded-full p-1 text-gray-400 hover:bg-brand-dark hover:text-gray-300 transition-colors"
         >
           <X className="h-5 w-5" />
           <span className="sr-only">Close</span>

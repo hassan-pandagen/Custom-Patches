@@ -1,104 +1,46 @@
 "use client";
 
 import Image from "next/image";
-import { WaveDivider } from "./ui/WaveDivider";
 
 const STEPS = [
-  {
-    id: 1,
-    tag: "Sketch",
-    image: "/assets/process-sketch.png",
-    wrapClass: "sm:absolute sm:left-[68%] sm:-top-[170px] sm:w-[20%]",
-  },
-  {
-    id: 2,
-    tag: "Mockup",
-    image: "/assets/process-mockup.png",
-    wrapClass: "sm:absolute sm:left-[14%] sm:-top-[40px] sm:w-[20%]",
-  },
-  {
-    id: 3,
-    tag: "Patch",
-    image: "/assets/process-patch.png",
-    wrapClass: "sm:absolute sm:left-[54%] sm:top-[197px] sm:w-[20%]",
-  },
+  { id: 1, title: "Submit Design", desc: "Send us your logo or artwork in any format. Our team digitizes it for optimal patch production.", image: "/assets/step-sketch.png" },
+  { id: 2, title: "Approve Mockup", desc: "Review your digital mockup with exact thread colors and sizing. Changes are free until you approve.", image: "/assets/step-mockup.png" },
+  { id: 3, title: "Receive & Apply", desc: "Get your heat press-ready patches in 12-14 days (rush 4-7 days). Apply in seconds with professional results.", image: "/assets/step-patch.png" },
 ];
-
-function StepTag({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      className="mb-3 self-start -rotate-6 font-display text-3xl sm:text-4xl text-brand-lime drop-shadow-[3px_3px_0_rgba(0,0,0,0.9)]"
-      style={{ WebkitTextStroke: "2px black" }}
-    >
-      {children}
-    </span>
-  );
-}
 
 export function ProcessSteps() {
   return (
-    <section id="process" className="relative bg-white pt-36 pb-24 lg:pt-40 lg:pb-32">
-      <div className="absolute top-0 left-0 right-0">
-        <WaveDivider fill="var(--color-brand-blue)" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <span
-          className="inline-block -rotate-6 font-display text-3xl leading-none text-white sm:text-5xl"
-          style={{ WebkitTextStroke: "3px black" }}
-        >
-          3STEPS
-        </span>
-
-        <h2 className="mt-6 font-display text-4xl sm:text-6xl leading-[0.95] text-black">
-          HERE&apos;S
-          <br />
-          EXACTLY HOW
-          <br />
-          WE MAKE
+    <section className="bg-[#111] py-12 md:py-24 text-white relative overflow-hidden">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 text-center">
+        
+        <h2 className="text-2xl md:text-4xl font-extrabold uppercase mb-4 tracking-wide">
+          <span className="text-white">FROM CONCEPT TO </span>
+          <span className="text-brand-orange">PRODUCTION-READY PATCHES</span>
         </h2>
-
-        <p className="mt-6 max-w-xl font-mouse text-xl sm:max-w-none sm:text-2xl lg:whitespace-nowrap text-black font-bold">
-          From your artwork or idea to a patch in hand. Three steps, no surprises, no setup fees.
+        <p className="text-gray-300 max-w-2xl mx-auto mb-10 md:mb-16 text-sm md:text-base">
+          Our streamlined process takes your clothing brand from design concept to heat press-ready patches in three simple steps. Professional quality, predictable timelines.
         </p>
 
-        <div className="relative mt-36 flex flex-col gap-16 sm:block sm:h-[560px] lg:h-[540px]">
-          {/* One continuous track: top middle -> Sketch -> Mockup -> Patch. */}
-          <svg
-            className="pointer-events-none absolute inset-0 hidden overflow-visible sm:block"
-            viewBox="0 0 1088 540"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M440,-450 C535,-395 610,-305 700,-235 C790,-165 850,-82 850,-5 C850,110 730,175 570,170 C435,166 338,124 262,120 C190,118 132,190 140,286 C150,408 276,450 406,422 C520,397 616,362 698,360"
-              fill="none"
-              stroke="#ECECEC"
-              strokeWidth="8"
-              strokeDasharray="38 34"
-              strokeLinecap="butt"
-            />
-          </svg>
+        <div className="relative grid gap-8 md:gap-12 md:grid-cols-3 max-w-5xl mx-auto">
+          {/* Arrows */}
+          <Image src="/assets/arrow-curve.png" width={96} height={48} className="hidden md:block absolute top-20 left-[25%] w-24 opacity-80" alt="" />
+          <Image src="/assets/arrow-curve.png" width={96} height={48} className="hidden md:block absolute top-20 right-[25%] w-24 opacity-80" alt="" />
 
           {STEPS.map((step) => (
-            <div key={step.id} className={`relative flex flex-col items-start ${step.wrapClass}`}>
-              <StepTag>{step.tag}</StepTag>
-              <div className="w-full max-w-[220px] overflow-hidden rounded-2xl bg-brand-mint shadow-lg">
-                <Image
-                  src={step.image}
-                  alt={`${step.tag} step`}
-                  width={259}
-                  height={302}
-                  className="w-full h-auto object-cover"
-                />
+            <div key={step.id} className="flex flex-col items-center relative z-10">
+              <div className="relative w-40 h-40 md:w-48 md:h-48 mb-4 md:mb-8 rounded-full border-2 border-white/20 p-2 hover:border-brand-orange transition-colors duration-300">
+                <div className="w-full h-full rounded-full overflow-hidden bg-black/50 relative">
+                  <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 160px, 192px" />
+                </div>
               </div>
+              <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">{step.title}</h3>
+              <p className="text-gray-400 text-xs md:text-sm leading-relaxed max-w-xs px-4 md:px-0">
+                {step.desc}
+              </p>
             </div>
           ))}
         </div>
-      </div>
 
-      <div className="absolute bottom-0 left-0 right-0 translate-y-px">
-        <WaveDivider fill="var(--color-brand-lime)" />
       </div>
     </section>
   );

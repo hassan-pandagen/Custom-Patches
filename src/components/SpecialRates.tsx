@@ -1,18 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useDropzone } from "react-dropzone";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
 import { Upload, CheckCircle } from "lucide-react";
 import { useCloudinary } from "../hooks/useCloudinary";
-import { WaveDivider } from "./ui/WaveDivider";
-
-const inputClass =
-  "w-full rounded-lg border-2 border-brand-blue bg-brand-mint px-4 py-3 font-mouse text-sm text-brand-blue placeholder:text-brand-blue/60 focus:outline-hidden focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30";
 
 export function SpecialRates() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isUploadingFile, setIsUploadingFile] = useState(false);
+  const [uploadedFileUrl, setUploadedFileUrl] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   // See QuoteForm: never report success for an attachment that never uploaded.
   const [failedAttachment, setFailedAttachment] = useState<string | null>(null);
@@ -42,7 +42,6 @@ export function SpecialRates() {
     size: "",
     patchType: "",
     backing: "",
-    heardAbout: "",
     instructions: "",
   });
 
@@ -63,17 +62,20 @@ export function SpecialRates() {
       let attachmentUrl = "";
       let uploadFailedFor: string | null = null;
 
+      // 1. Upload file to Cloudinary if selected
       if (selectedFile) {
         setIsUploadingFile(true);
         const uploadedUrl = await upload(selectedFile);
         if (uploadedUrl) {
           attachmentUrl = uploadedUrl;
+          setUploadedFileUrl(uploadedUrl);
         } else {
           uploadFailedFor = selectedFile.name;
         }
         setIsUploadingFile(false);
       }
 
+      // 2. Submit to Web3Forms
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -82,9 +84,10 @@ export function SpecialRates() {
         },
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          subject: `New Free Quote Request from ${formData.name}`,
+          subject: `New Special Rates Request from ${formData.name}`,
           from_name: "My Custom Patches Website",
-
+          
+          // Form Data
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
@@ -92,33 +95,32 @@ export function SpecialRates() {
           size: formData.size,
           patch_type: formData.patchType,
           backing: formData.backing,
-          heard_about: formData.heardAbout,
           instructions: formData.instructions,
-
+          
+          // Attachment Link
           attachment_link:
             attachmentUrl ||
             (uploadFailedFor
               ? `UPLOAD FAILED - customer selected "${uploadFailedFor}". Ask them to email it.`
               : "No file attached"),
-
+          
           message: `
-            New Free Quote Request:
+            New Special Rates Request:
             ------------------
             Name: ${formData.name}
             Email: ${formData.email}
             Phone: ${formData.phone}
-
+            
             Specs:
             ------
             Size: ${formData.size}
             Quantity: ${formData.quantity}
             Patch Type: ${formData.patchType}
             Backing: ${formData.backing}
-            How they heard about us: ${formData.heardAbout || "Not specified"}
-
+            
             Instructions:
             ${formData.instructions || "None"}
-
+            
             Design File:
             ${
               attachmentUrl
@@ -144,10 +146,12 @@ export function SpecialRates() {
           size: "",
           patchType: "",
           backing: "",
-          heardAbout: "",
           instructions: "",
         });
         setSelectedFile(null);
+        setUploadedFileUrl(null);
+        // Hide success message after 5 seconds (keep it if the customer
+        // still needs to read the failed-attachment notice)
         if (!uploadFailedFor) {
           setTimeout(() => setIsSuccess(false), 5000);
         }
@@ -159,130 +163,235 @@ export function SpecialRates() {
     }
   };
 
-  return (
-    <section className="relative bg-brand-blue pb-20 lg:pb-28">
-      <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-brand-mint p-6 sm:p-10 shadow-2xl">
-          {isSuccess ? (
-            <div className="flex flex-col items-center justify-center gap-4 py-12 text-center animate-in fade-in zoom-in-95">
-              <CheckCircle className="h-14 w-14 text-brand-blue" />
-              <h3 className="font-display text-2xl text-brand-blue">Thank You!</h3>
-              <p className="font-mouse text-sm text-brand-blue/80 max-w-sm">
-                We&apos;ll contact you within 24 hours with a free quote and mockup for your order.
-              </p>
-              {failedAttachment && (
-                <p className="max-w-sm rounded-lg border-2 border-brand-blue bg-white/70 p-3 font-mouse text-sm text-brand-blue">
-                  We could not attach <strong>{failedAttachment}</strong>. Your request was sent
-                  without it &mdash; please email the file to{" "}
-                  <a href="mailto:admin@mycustompatches.com" className="font-bold underline">
-                    admin@mycustompatches.com
-                  </a>
-                  .
-                </p>
-              )}
+  if (isSuccess) {
+    return (
+      <section className="relative bg-white w-full overflow-hidden">
+        <div className="flex flex-col lg:flex-row w-full max-w-[1440px] mx-auto">
+          <div className="w-full lg:w-1/2 py-24 px-8 flex flex-col items-center justify-center text-center relative">
+            <div className="relative w-[131px] h-[120px] mb-6 animate-float">
+              <Image
+                 src="/assets/instant-quote-envelope.png"
+                 alt="Envelope"
+                 fill
+                 sizes="131px"
+                 className="object-contain drop-shadow-xl"
+               />
             </div>
-          ) : (
-            <>
-              <div className="mb-6 flex items-center gap-3">
-                <span className="h-3.5 w-3.5 rounded-full bg-brand-lime" />
-                <h3 className="font-mouse text-sm sm:text-base uppercase tracking-wide text-brand-blue">
-                  Get Your Free Quote &amp; 12-24h Mockup
-                </h3>
+
+            <h2 className="text-5xl font-extrabold text-brand-dark leading-tight mb-6">
+              Instant Quote <br /> Available
+            </h2>
+            
+            <p className="text-gray-500 max-w-md text-lg leading-relaxed">
+              Receive your quick quote instantly for custom patches! Experience top-notch craftsmanship, swift delivery, and unbeatable pricing.
+            </p>
+          </div>
+
+          <div className="w-full lg:w-1/2 bg-[#1A1A1A] p-8 md:p-16 flex flex-col justify-center text-white">
+            <div className="max-w-xl mx-auto w-full">
+              <div className="flex flex-col items-center justify-center space-y-4 text-center animate-in fade-in zoom-in-95">
+                <CheckCircle className="h-16 w-16 text-green-400" />
+                <h3 className="text-3xl font-bold text-white">Thank You!</h3>
+                <p className="text-gray-300 text-lg">
+                  We will contact you within 24 hours with special rates for your order.
+                </p>
+                <p className="text-gray-400 text-sm">
+                  Check your email for confirmation
+                </p>
+                {failedAttachment && (
+                  <p className="max-w-md rounded-lg border border-amber-400/40 bg-amber-500/10 p-3 text-sm text-amber-200">
+                    We could not attach <strong>{failedAttachment}</strong>. Your request was sent
+                    without it &mdash; please email the file to{" "}
+                    <a href="mailto:admin@mycustompatches.com" className="font-medium underline">
+                      admin@mycustompatches.com
+                    </a>
+                    .
+                  </p>
+                )}
               </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input name="name" value={formData.name} onChange={handleInputChange} className={inputClass} placeholder="Name*" required />
-                  <input name="email" type="email" value={formData.email} onChange={handleInputChange} className={inputClass} placeholder="Email*" required />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input name="phone" value={formData.phone} onChange={handleInputChange} className={inputClass} placeholder="Phone Number*" required />
-                  <input name="quantity" type="number" min={5} value={formData.quantity} onChange={handleInputChange} className={inputClass} placeholder="Quantity (min 5)*" required />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <input name="size" value={formData.size} onChange={handleInputChange} className={inputClass} placeholder="Size or Placement*" required />
-
-                  <label htmlFor="sr-patchType" className="sr-only">Patch Type</label>
-                  <select id="sr-patchType" name="patchType" value={formData.patchType} onChange={handleInputChange} className={inputClass} required>
-                    <option value="">Patch Type</option>
-                    <option value="Custom Embroidered Patches">Custom Embroidered Patches</option>
-                    <option value="Custom Chenille Patches">Custom Chenille Patches</option>
-                    <option value="Custom Woven Patches">Custom Woven Patches</option>
-                    <option value="Custom Printed Patches">Custom Printed Patches</option>
-                    <option value="Custom PVC Patches">Custom PVC Patches</option>
-                    <option value="Custom Leather Patches">Custom Leather Patches</option>
-                    <option value="Custom 3D Embroidery Transfer">Custom 3D Embroidery Transfer</option>
-                    <option value="Custom Sequin Patches">Custom Sequin Patches</option>
-                  </select>
-
-                  <label htmlFor="sr-backing" className="sr-only">Backing Type</label>
-                  <select id="sr-backing" name="backing" value={formData.backing} onChange={handleInputChange} className={inputClass}>
-                    <option value="">Select Backing</option>
-                    <option value="Iron-on">Iron-on</option>
-                    <option value="Sew-on">Sew-on</option>
-                    <option value="Velcro">Velcro</option>
-                    <option value="Adhesive">Adhesive</option>
-                    <option value="Sticker">Sticker</option>
-                    <option value="Plain">Plain (No Backing)</option>
-                  </select>
-                </div>
-
-                <input
-                  name="heardAbout"
-                  value={formData.heardAbout}
-                  onChange={handleInputChange}
-                  className={inputClass}
-                  placeholder="How did you hear about us? (optional)"
-                />
-
-                <textarea
-                  name="instructions"
-                  value={formData.instructions}
-                  onChange={handleInputChange}
-                  className={`${inputClass} min-h-[90px] resize-none`}
-                  placeholder='Instructions: Text "Panda Patches" white background...'
-                />
-
-                {/* Drag & Drop Area */}
-                <div
-                  {...getRootProps()}
-                  className={`rounded-lg border-2 border-dashed p-6 text-center cursor-pointer transition-colors border-brand-blue ${
-                    isDragActive ? "bg-brand-lime/50" : "hover:bg-brand-lime/30"
-                  }`}
-                >
-                  <input {...getInputProps()} aria-label="Upload design file (SVG, PNG, JPG or PDF)" />
-                  <div className="flex flex-col items-center gap-2">
-                    <Upload className="h-6 w-6 text-brand-blue" />
-                    {selectedFile ? (
-                      <p className="font-mouse text-sm text-brand-blue">{selectedFile.name}</p>
-                    ) : (
-                      <>
-                        <p className="font-mouse text-sm text-brand-blue">Drop files here or</p>
-                        <span className="rounded-full bg-white px-4 py-1.5 font-mouse text-xs text-brand-blue">
-                          Select Files
-                        </span>
-                      </>
-                    )}
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting || isUploadingFile}
-                  className="w-full rounded-full bg-brand-lime py-4 font-mouse text-sm text-brand-blue hover:bg-white transition-colors disabled:opacity-60"
-                >
-                  {isUploadingFile ? "Uploading File..." : isSubmitting ? "Submitting..." : "Get My Free Quote"}
-                </button>
-              </form>
-            </>
-          )}
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+    );
+  }
 
-      <div className="absolute bottom-0 left-0 right-0 translate-y-px">
-        <WaveDivider fill="white" />
+  return (
+    <section className="relative bg-white w-full overflow-hidden py-12 md:py-24">
+
+      <div className="flex flex-col lg:flex-row w-full max-w-[1440px] mx-auto">
+
+        {/* LEFT SIDE: "Instant Quote Available" */}
+        <div className="w-full lg:w-1/2 px-8 flex flex-col items-center justify-center text-center relative">
+
+          {/* Envelope Icon */}
+          <div className="relative w-[131px] h-[120px] mb-6 animate-float">
+             <Image
+                src="/assets/instant-quote-envelope.png"
+                alt="Envelope"
+                fill
+                sizes="131px"
+                className="object-contain drop-shadow-xl"
+              />
+          </div>
+
+          <h2 className="text-5xl font-extrabold text-brand-dark leading-tight mb-6">
+            Instant Quote <br /> Available
+          </h2>
+          
+          <p className="text-gray-500 max-w-md text-lg leading-relaxed">
+            Receive your quick quote instantly for custom patches! Experience top-notch craftsmanship, swift delivery, and unbeatable pricing.
+          </p>
+        </div>
+
+
+        {/* RIGHT SIDE: The Dark Form */}
+        <div className="w-full lg:w-1/2 bg-[#1A1A1A] p-8 md:p-16 flex flex-col justify-center text-white hide-scrollbar overflow-y-auto">
+            <div className="max-w-xl mx-auto w-full">
+                <div className="mb-8 text-center">
+                  <h3 className="text-2xl font-bold uppercase tracking-wider">
+                    <span className="text-white">Unlock </span>
+                    <span className="text-brand-orange">Special Rates</span>
+                  </h3>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Input 
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="bg-[#2A2A2A] border-transparent text-white placeholder:text-gray-400 h-12 rounded-lg" 
+                      placeholder="Name"
+                      required
+                    />
+                    <Input 
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="bg-[#2A2A2A] border-transparent text-white placeholder:text-gray-400 h-12 rounded-lg" 
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+
+                  <Input
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="bg-[#2A2A2A] border-transparent text-white placeholder:text-gray-400 h-12 rounded-lg"
+                    placeholder="Phone Number"
+                    required
+                  />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Input
+                      name="size"
+                      value={formData.size}
+                      onChange={handleInputChange}
+                      className="bg-[#2A2A2A] border-transparent text-white placeholder:text-gray-400 h-12 rounded-lg"
+                      placeholder="Size Or Placement"
+                      required
+                    />
+                    <Input
+                      name="quantity"
+                      type="number"
+                      value={formData.quantity}
+                      onChange={handleInputChange}
+                      className="bg-[#2A2A2A] border-transparent text-white placeholder:text-gray-400 h-12 rounded-lg"
+                      placeholder="Quantity"
+                      required
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="relative">
+                      <label htmlFor="sr-patchType" className="sr-only">Patch Type</label>
+                      <select
+                        id="sr-patchType"
+                        name="patchType"
+                        value={formData.patchType}
+                        onChange={handleInputChange}
+                        className="w-full bg-[#2A2A2A] text-white h-12 rounded-lg px-3 text-sm border-2 border-brand-orange focus:border-brand-orange appearance-none cursor-pointer"
+                        required
+                      >
+                        <option value="" className="bg-[#1A1A1A] text-gray-400">Select Patch Type</option>
+                        <option value="Custom Embroidered Patches" className="bg-[#1A1A1A]">Custom Embroidered Patches</option>
+                        <option value="Custom Chenille Patches" className="bg-[#1A1A1A]">Custom Chenille Patches</option>
+                        <option value="Custom Woven Patches" className="bg-[#1A1A1A]">Custom Woven Patches</option>
+                        <option value="Custom Printed Patches" className="bg-[#1A1A1A]">Custom Printed Patches</option>
+                        <option value="Custom PVC Patches" className="bg-[#1A1A1A]">Custom PVC Patches</option>
+                        <option value="Custom Leather Patches" className="bg-[#1A1A1A]">Custom Leather Patches</option>
+                        <option value="Custom 3D Embroidery Transfer" className="bg-[#1A1A1A]">Custom 3D Embroidery Transfer</option>
+                        <option value="Custom Sequin Patches" className="bg-[#1A1A1A]">Custom Sequin Patches</option>
+                      </select>
+                    </div>
+                    <div className="relative">
+                      <label htmlFor="sr-backing" className="sr-only">Backing Type</label>
+                      <select
+                        id="sr-backing"
+                        name="backing"
+                        value={formData.backing}
+                        onChange={handleInputChange}
+                        className="w-full bg-[#2A2A2A] text-white h-12 rounded-lg px-3 text-sm border-transparent focus:border-brand-orange appearance-none cursor-pointer"
+                        required
+                      >
+                        <option value="" className="bg-[#1A1A1A] text-gray-400">Select Backing</option>
+                        <option value="Iron-on" className="bg-[#1A1A1A]">Iron-on</option>
+                        <option value="Sew-on" className="bg-[#1A1A1A]">Sew-on</option>
+                        <option value="Velcro" className="bg-[#1A1A1A]">Velcro</option>
+                        <option value="Adhesive" className="bg-[#1A1A1A]">Adhesive</option>
+                        <option value="Sticker" className="bg-[#1A1A1A]">Sticker</option>
+                        <option value="Plain" className="bg-[#1A1A1A]">Plain (No Backing)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <textarea 
+                    name="instructions"
+                    value={formData.instructions}
+                    onChange={handleInputChange}
+                    className="w-full bg-[#2A2A2A] border-transparent text-white placeholder:text-gray-400 rounded-lg p-4 min-h-[100px] text-sm focus:border-brand-orange focus:outline-hidden resize-none"
+                    placeholder="Instructions (Optional)"
+                  />
+
+                  {/* Drag & Drop Area */}
+                  <div
+                    {...getRootProps()}
+                    className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors ${
+                      isDragActive 
+                        ? "border-brand-orange bg-brand-orange/10" 
+                        : "border-gray-600 bg-[#222] hover:bg-[#2a2a2a]"
+                    }`}
+                  >
+                    <input {...getInputProps()} aria-label="Upload design file (SVG, PNG, JPG or PDF)" />
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="h-10 w-10 rounded-full bg-brand-orange/20 flex items-center justify-center text-brand-orange">
+                        <Upload className="h-5 w-5" />
+                      </div>
+                      {selectedFile ? (
+                        <p className="text-white font-medium">{selectedFile.name}</p>
+                      ) : (
+                        <>
+                          <p className="text-white font-medium">Drag & Drop Files Here</p>
+                          <p className="text-gray-400 text-xs">or click to select</p>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  <Button 
+                    type="submit"
+                    disabled={isSubmitting || isUploadingFile}
+                    className="w-full bg-brand-orange hover:bg-brand-red text-white h-12 font-semibold uppercase tracking-wide"
+                  >
+                    {isUploadingFile ? "Uploading File..." : isSubmitting ? "Submitting..." : "Submit"}
+                  </Button>
+                </form>
+            </div>
+        </div>
+
       </div>
     </section>
   );

@@ -1,25 +1,32 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { Button } from "./ui/Button";
 import { cn } from "../lib/utils";
 
 interface NavbarProps {
   onOpenQuote?: () => void;
 }
 
-const MENU_LINKS = [
-  { label: "Custom Patches", href: "/custom-patches" },
-  { label: "About Us", href: "/about" },
-  { label: "Blogs & Insights", href: "/blog" },
-  { label: "Contact Us", href: "/contact" },
+const PATCH_CATEGORIES = [
+  "Custom Embroidered Patches",
+  "Custom Chenille Patches",
+  "Custom PVC Patches",
+  "Custom Woven Patches",
+  "Custom Printed Patches",
+  "Custom Leather Patches",
+  "Custom 3D Embroidery Transfer",
+  "Custom Sequin Patch",
 ];
 
 export function Navbar({ onOpenQuote }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
   const handleQuoteClick = () => {
@@ -27,93 +34,165 @@ export function Navbar({ onOpenQuote }: NavbarProps) {
     onOpenQuote?.();
   };
 
-  const handleChatClick = () => {
-    const tawk = (window as any).Tawk_API;
-    if (tawk?.maximize) {
-      tawk.maximize();
-    }
-  };
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-blue">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="shrink-0" onClick={closeMenu}>
-          <Image
-            src="/assets/Logo & PIn-01.png"
-            alt="My Custom Patches"
-            width={1250}
-            height={356}
-            className="h-11 w-auto object-contain sm:h-12"
-            priority
-          />
-        </Link>
+        <div className="flex items-center">
+          <Link href="/">
+            <Image
+              src="/assets/logo.png"
+              alt="My Custom Patches"
+              width={120}
+              height={48}
+              className="h-12 w-auto object-contain"
+              priority
+            />
+          </Link>
+        </div>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex md:items-center md:space-x-8">
+          <Link
+            href="/"
+            className="text-sm font-medium text-gray-700 hover:text-brand-orange transition-colors"
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className="text-sm font-medium text-gray-700 hover:text-brand-orange transition-colors"
+          >
+            About
+          </Link>
+
+          {/* Custom Patches Dropdown */}
+          <div className="relative group">
+            <button className="text-sm font-medium text-gray-700 hover:text-brand-orange transition-colors flex items-center gap-1">
+              Custom Patches
+              <ChevronDown className="h-4 w-4" />
+            </button>
+            
+            {/* Dropdown Menu */}
+            <div className="absolute left-0 top-full pt-2 hidden group-hover:block bg-white rounded-lg shadow-xl border border-gray-200 min-w-[240px] z-50">
+              {PATCH_CATEGORIES.map((category) => (
+                <Link
+                  key={category}
+                  href={`/custom-patches/${category.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-brand-orange hover:bg-gray-50 transition-colors first:rounded-t-lg last:rounded-b-lg"
+                >
+                  {category}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link
+            href="/blog"
+            className="text-sm font-medium text-gray-700 hover:text-brand-orange transition-colors"
+          >
+            Blogs & Insights
+          </Link>
+
+          <Link
+            href="/contact"
+            className="text-sm font-medium text-gray-700 hover:text-brand-orange transition-colors"
+          >
+            Contact
+          </Link>
+        </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-3">
-          <button
-            onClick={handleChatClick}
-            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/95 px-5 py-2.5 font-mouse text-sm text-brand-blue hover:bg-white transition-colors"
-          >
-            <MessageCircle className="h-4 w-4" />
-            Chat Now
-          </button>
-
-          <button
-            onClick={() => setIsOpen((v) => !v)}
-            className="inline-flex items-center gap-2 rounded-full border-2 border-brand-blue-light/70 px-5 py-2.5 font-mouse text-sm text-white hover:bg-white/10 transition-colors"
-            aria-expanded={isOpen}
+        <div className="flex items-center gap-4">
+          <Button onClick={handleQuoteClick} size="sm" className="hidden md:inline-flex bg-white text-black hover:bg-brand-orange hover:text-white border-2 border-brand-orange">
+            Instant Quote
+          </Button>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={toggleMenu}
+            className="p-2 text-gray-600 hover:bg-gray-100 rounded-md md:hidden"
             aria-label="Toggle menu"
           >
-            {isOpen ? "Close" : "Menu"}
-            {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            {isOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
       </div>
 
-      {/* Floating dropdown panel */}
-      <div
-        className={cn(
-          "absolute right-4 top-[calc(100%+0.5rem)] sm:right-6 lg:right-8 w-[calc(100%-2rem)] max-w-xs origin-top-right rounded-2xl bg-white p-6 shadow-2xl transition-all duration-200",
-          isOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
-        )}
-      >
-        <ul className="space-y-3">
-          {MENU_LINKS.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                onClick={closeMenu}
-                className="font-display text-2xl text-brand-blue hover:text-brand-mint transition-colors"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <button
-          onClick={handleQuoteClick}
-          className="mt-6 w-full rounded-full bg-brand-blue py-3 font-mouse text-sm text-white hover:bg-brand-blue-light hover:text-brand-blue transition-colors"
-        >
-          Get Instant Quote
-        </button>
-
-        <button
-          onClick={handleChatClick}
-          className="mt-3 w-full rounded-full border-2 border-brand-blue/20 py-3 font-mouse text-sm text-brand-blue sm:hidden"
-        >
-          Chat Now
-        </button>
-
-        <p className="mt-6 font-mouse text-xs text-gray-500">
-          EST. 2014 &middot; Austin, United States
-        </p>
-      </div>
-
-      {/* Backdrop to close on outside click */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="fixed inset-0 -z-10" onClick={closeMenu} aria-hidden="true" />
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="px-4 pt-4 pb-6 space-y-4">
+            <Link
+              href="/"
+              onClick={closeMenu}
+              className="block text-base font-medium text-gray-700 hover:text-brand-orange transition-colors py-2"
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              onClick={closeMenu}
+              className="block text-base font-medium text-gray-700 hover:text-brand-orange transition-colors py-2"
+            >
+              About
+            </Link>
+
+            {/* Custom Patches Mobile Dropdown */}
+            <div>
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="w-full text-left text-base font-medium text-gray-700 hover:text-brand-orange transition-colors py-2 flex items-center justify-between"
+              >
+                Custom Patches
+                <ChevronDown className={`h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {/* Dropdown Items */}
+                {isDropdownOpen && (
+                  <div className="pl-4 mt-2 space-y-2">
+                    {PATCH_CATEGORIES.map((category) => (
+                      <Link
+                        key={category}
+                        href={`/custom-patches/${category.toLowerCase().replace(/\s+/g, "-")}`}
+                        onClick={closeMenu}
+                        className="block text-sm font-medium text-gray-600 hover:text-brand-orange transition-colors py-1.5"
+                      >
+                        {category}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href="/blog"
+                onClick={closeMenu}
+                className="block text-base font-medium text-gray-700 hover:text-brand-orange transition-colors py-2"
+              >
+                Blogs & Insights
+              </Link>
+
+              <Link
+                href="/contact"
+                onClick={closeMenu}
+                className="block text-base font-medium text-gray-700 hover:text-brand-orange transition-colors py-2"
+              >
+                Contact
+              </Link>
+              
+              <button
+              onClick={handleQuoteClick}
+              className="w-full bg-transparent text-black border-2 border-brand-orange hover:bg-brand-orange hover:text-white transition-colors py-2 px-4 font-bold text-sm rounded-md"
+            >
+              Instant Quote
+            </button>
+          </div>
+        </div>
       )}
     </nav>
   );

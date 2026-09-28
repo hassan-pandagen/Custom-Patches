@@ -198,7 +198,7 @@ export function QuoteForm() {
           <select
             id="quote-category"
             {...register("category")}
-            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-brand-mint focus:outline-hidden focus:ring-2 focus:ring-brand-mint/20"
+            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-brand-orange focus:outline-hidden focus:ring-2 focus:ring-brand-orange/20"
           >
             <option value="">Select Patch Type</option>
             <option value="Custom Embroidered Patches">Custom Embroidered Patches</option>
@@ -231,7 +231,7 @@ export function QuoteForm() {
           <select
             id="quote-backing"
             {...register("backing")}
-            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-brand-mint focus:outline-hidden focus:ring-2 focus:ring-brand-mint/20"
+            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-brand-orange focus:outline-hidden focus:ring-2 focus:ring-brand-orange/20"
           >
             <option value="">Select Backing</option>
             <option value="Iron-on">Iron-on</option>
@@ -254,7 +254,7 @@ export function QuoteForm() {
         {...getRootProps()}
         className={cn(
           "flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-600 bg-gray-900 p-3 transition-colors hover:bg-gray-800",
-          isDragActive && "border-brand-mint bg-brand-mint/10",
+          isDragActive && "border-brand-orange bg-brand-orange/10",
           errors.file && "border-red-500"
         )}
       >
@@ -277,7 +277,7 @@ export function QuoteForm() {
         </div>
       )}
 
-      <Button type="submit" className="w-full bg-brand-mint hover:bg-brand-lime text-brand-blue" disabled={isSubmitting || isUploadingFile}>
+      <Button type="submit" className="w-full bg-brand-orange hover:bg-brand-red text-white" disabled={isSubmitting || isUploadingFile}>
         {isSubmitting || isUploadingFile ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
